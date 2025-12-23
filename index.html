@@ -1,0 +1,193 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shadow.pluse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,#ff00f7,transparent 40%),
+    radial-gradient(circle at bottom right,#00ffe1,transparent 40%),
+    linear-gradient(135deg,#050505,#000);
+  overflow:hidden;
+  color:white;
+}
+
+/* Gradient blobs */
+.blob{
+  position:absolute;
+  width:320px;
+  height:320px;
+  background:linear-gradient(45deg,#ff00f7,#00ffe1);
+  filter:blur(120px);
+  opacity:0.35;
+  animation:move 10s infinite alternate;
+}
+
+.blob:nth-child(1){top:-120px;left:-120px;}
+.blob:nth-child(2){bottom:-120px;right:-120px;animation-delay:3s;}
+
+@keyframes move{
+  from{transform:translate(0,0);}
+  to{transform:translate(140px,90px);}
+}
+
+/* Center layout */
+.container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* Glass card */
+.card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border-radius:28px;
+  padding:45px 25px;
+  text-align:center;
+  box-shadow:0 0 70px rgba(0,255,225,0.3);
+  animation:fadeUp 1.4s ease;
+  max-width:380px;
+  width:100%;
+  overflow:visible;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(60px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* NAME -- FIXED */
+h1{
+  font-size:clamp(2.1rem, 8vw, 2.6rem);
+  font-weight:700;
+  background:linear-gradient(90deg,#ff00f7,#00ffe1,#ff00f7);
+  background-size:200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientMove 4s infinite linear;
+  white-space:normal;
+  word-break:break-word;
+  width:100%;
+  text-align:center;
+}
+
+@keyframes gradientMove{
+  to{background-position:200%;}
+}
+
+/* Typing text */
+.typing{
+  margin-top:15px;
+  font-size:1.05rem;
+  color:#e0e0e0;
+  line-height:1.5;
+  min-height:60px;
+  padding:0 5px;
+  word-wrap:break-word;
+}
+
+/* Social icons */
+.socials{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+
+.socials a{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:white;
+  background:linear-gradient(135deg,#ff00f7,#00ffe1);
+  box-shadow:0 0 30px rgba(0,255,225,0.7);
+  transition:0.4s;
+  text-decoration:none;
+}
+
+.socials a:hover{
+  transform:scale(1.25) rotate(10deg);
+  box-shadow:0 0 55px rgba(255,0,247,1);
+}
+
+/* Footer */
+footer{
+  position:absolute;
+  bottom:15px;
+  width:100%;
+  text-align:center;
+  font-size:0.75rem;
+  color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background blobs -->
+<div class="blob"></div>
+<div class="blob"></div>
+
+<div class="container">
+  <div class="card">
+    <h1>Shadow.pluse</h1>
+
+    <div class="typing" id="typing"></div>
+
+    <div class="socials">
+      <!-- YouTube -->
+      <a href="https://m.youtube.com/@AMV_FAN" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/shadow.pluse" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 | Shadow.pluse</footer>
+
+<script>
+const text = "Gamer • Editor • Creator • Gradient Vibes • AMV Lover";
+let i = 0;
+const speed = 70;
+const typingDiv = document.getElementById("typing");
+typingDiv.innerHTML = "";
+
+function type(){
+  if(i < text.length){
+    typingDiv.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, speed);
+  }
+}
+type();
+</script>
+
+</body>
+</html>
